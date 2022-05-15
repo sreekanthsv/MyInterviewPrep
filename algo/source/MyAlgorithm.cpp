@@ -1,4 +1,5 @@
 #include <MyAlgorithm.hpp>
+namespace myalgoritm{
 bool isprime(int n)
 {
     if(n<=1)
@@ -15,4 +16,4 @@ bool isprime(int n)
             return false;
     return true;
 }
-
+}
