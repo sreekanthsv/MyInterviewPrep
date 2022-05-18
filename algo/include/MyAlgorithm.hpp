@@ -4,6 +4,7 @@
 namespace myalgoritm{
 
 bool isprime(int n);
+double factorial(int n);
 template <typename T>
 int binary_search(T arrayT[], int size_of_array, T t)
 {

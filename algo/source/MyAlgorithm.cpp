@@ -16,6 +16,11 @@ bool isprime(int n)
             return false;
     return true;
 }
-
+double factorial(int n)
+{
+    if(n==0 )
+        return 1;
+    return n*factorial(n-1);
+}
 
 }
