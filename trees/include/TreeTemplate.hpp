@@ -62,4 +62,26 @@ bool isIn(T v, nodeT<T>* bst) {
     else
         return isIn(v, right(bst));
 }
+template <typename T>
+nodeT<T>* findIn(T v, nodeT<T>* bst) {
+    if ( isempty(bst) )
+        return nullptr;
+    else if ( v == root(bst) )
+        return bst;
+    else if ( v < root(bst) )
+        return findIn(v, left(bst));
+    else
+        return findIn(v, right(bst));
+}
+
+template <typename T>
+void inorder( nodeT<T>* bst) {
+    if ( isempty(bst) )
+        return ;
+    
+    inorder(bst->pLeft);
+    std::cout<<bst->Obj<<std::endl;
+    inorder(bst->pRight);
+}
+
 #endif // !TREE_TEMPLATE_H

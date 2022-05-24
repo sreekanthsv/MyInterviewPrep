@@ -8,9 +8,12 @@ int main()
     {
         gHead = insert(i*2,gHead);
     }
-    std::cout<<"insert complete"<<std::endl;
+
+    inorder(gHead);
+
     for(int i=0;i<50;i++)
     {
-        std::cout<<i<<" "<<isIn(i,gHead)<<std::endl;
+        if(isIn(i,gHead))
+            std::cout<<(findIn(i,gHead)->Obj)<<std::endl;
     }
 }
