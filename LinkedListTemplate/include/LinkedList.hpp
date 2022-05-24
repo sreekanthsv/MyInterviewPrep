@@ -12,90 +12,27 @@ struct listT{
 };
 
 template < typename T>
-void push(listT<T>**LHead ,  T obj){
-    *LHead = new listT<T>(obj, *LHead);
-}
+void push(listT<T>**LHead ,  T obj);
     
 template < typename T>
-void pop(listT<T>**LHead )
-{
-    listT<T>* top = (*LHead)->pNextObj;
-    delete *LHead;
-    *LHead = top;
-}
+void pop(listT<T>**LHead );
 template < typename T>
-T top(listT<T>**LHead)
-{
-    return (*LHead)->Obj;
-}
+T top(listT<T>**LHead);
 template < typename T>
-bool isEmpty(listT<T>**LHead)
-{
-    return *LHead == nullptr;
-}
+bool isEmpty(listT<T>**LHead);
 template < typename T>
-size_t length(listT<T>*LHead)
-{
-    size_t Length= 0; 
-    for(listT<T>* top =*LHead; top != nullptr ;top=top->pNextObj,Length++);
-    return Length;
-}
+size_t length(listT<T>*LHead);
 template < typename T>
-void reverse_the_list(listT<T>** newHead)
-{
-    if(*newHead == nullptr)
-        return;
-    listT<T> *first =*newHead,*rest=first->pNextObj;
-    if(rest==nullptr)
-        return;
-
-    reverse_the_list(&rest);
-    first->pNextObj->pNextObj = first;
-    first->pNextObj = nullptr;
-    *newHead = rest;
-}
-
+void reverse_the_list(listT<T>** newHead);
 template < typename T>
-void add_node_1to4(listT<T>** newHead)
-{
-    push(newHead,1);
-    push(newHead,2);
-    push(newHead,3);
-    push(newHead,4);
-    std::cout<<"Nodes Added"<<std::endl;
-}
+void add_node_1to4(listT<T>** newHead);
 template < typename T>
-void print_all_in_list(listT<T>* LHead)
-{
-    if(LHead == nullptr)
-        return;
-    std::cout<<LHead->Obj<<std::endl;
-    print_all_in_list(LHead->pNextObj); 
-}
+void print_all_in_list(listT<T>* LHead);
 template < typename T>
-void print_from_last(listT<T>* LHead)
-{
-    if(LHead == nullptr)
-        return;
-    print_from_last(LHead->pNextObj);
-    std::cout<<LHead->Obj<<std::endl;
-}
+void print_from_last(listT<T>* LHead);
 template < typename T>
-void split_Linked_List(listT<T>** LHead,listT<T>** list1,listT<T>** list2)
-{
-    if(*LHead == nullptr)
-        return;
-    push(list1, top(LHead));pop(LHead);
-    if(*LHead == nullptr)
-        return;
-    push(list2,top(LHead));pop(LHead);
-    split_Linked_List(LHead,list1,list2);
-}
+void split_Linked_List(listT<T>** LHead,listT<T>** list1,listT<T>** list2);
 template < typename T>
-void delete_list(listT<T>** LHead){
-    if(*LHead == nullptr)
-        return;
-    pop(LHead);
-    delete_list(LHead);
-}
+void delete_list(listT<T>** LHead);
+#include "LinkedList.ipp"
 #endif // !LinkedList_H

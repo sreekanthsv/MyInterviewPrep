@@ -14,74 +14,22 @@ struct nodeT{
 };
 
 template <typename T>
-nodeT<T>* MakeTree(T obj, nodeT<T>* pleft,nodeT<T>* pright)
-{
-    return (new nodeT<T>(obj, pleft, pright));
-}
-
-
+nodeT<T>* MakeTree(T obj, nodeT<T>* pleft,nodeT<T>* pright);
 template <typename T>
-bool isempty( nodeT<T>* bst)
-{
-    return bst == nullptr ;    
-}
+bool isempty( nodeT<T>* bst);
 template <typename T>
-T root(nodeT<T>* bst)
-{
-    return bst->Obj;
-}
+T root(nodeT<T>* bst);
 template <typename T>
-nodeT<T>* left(nodeT<T>* bst)
-{
-    return bst->pLeft;
-}
+nodeT<T>* left(nodeT<T>* bst);
 template <typename T>
-nodeT<T>* right(nodeT<T>* bst)
-{
-    return bst->pRight ;
-}
-
+nodeT<T>* right(nodeT<T>* bst);
 template <typename T>
-nodeT<T>* insert(T obj, nodeT<T>* bst)
-{
-    if(isempty(bst))     
-        return new nodeT<T>(obj,nullptr,nullptr);
-    else if ( obj < bst->Obj)
-        return MakeTree(root(bst),insert(obj,left(bst)),right(bst));
-    else if ( obj > bst->Obj)
-        return MakeTree(root(bst),left(bst),insert(obj,right(bst)));
-}
+nodeT<T>* insert(T obj, nodeT<T>* bst);
 template <typename T>
-bool isIn(T v, nodeT<T>* bst) {
-    if ( isempty(bst) )
-        return false;
-    else if ( v == root(bst) )
-        return true;
-    else if ( v < root(bst) )
-        return isIn(v, left(bst));
-    else
-        return isIn(v, right(bst));
-}
+bool isIn(T v, nodeT<T>* bst) ;
 template <typename T>
-nodeT<T>* findIn(T v, nodeT<T>* bst) {
-    if ( isempty(bst) )
-        return nullptr;
-    else if ( v == root(bst) )
-        return bst;
-    else if ( v < root(bst) )
-        return findIn(v, left(bst));
-    else
-        return findIn(v, right(bst));
-}
-
+nodeT<T>* findIn(T v, nodeT<T>* bst) ;
 template <typename T>
-void inorder( nodeT<T>* bst) {
-    if ( isempty(bst) )
-        return ;
-    
-    inorder(bst->pLeft);
-    std::cout<<bst->Obj<<std::endl;
-    inorder(bst->pRight);
-}
-
+void inorder( nodeT<T>* bst) ;
+#include "TreeTemplate.ipp"
 #endif // !TREE_TEMPLATE_H
